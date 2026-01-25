@@ -26,7 +26,7 @@ export const FloatingContact = () => {
           className="fixed bottom-8 right-8 z-40 flex flex-col space-y-4"
         >
           <a 
-            href="https://wa.me/70000000000"
+            href="https://wa.me/79240098880"
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 bg-background border border-separator flex items-center justify-center text-secondary hover:text-foreground hover:border-foreground transition-all duration-300"
@@ -35,7 +35,7 @@ export const FloatingContact = () => {
             <MessageSquare size={18} />
           </a>
           <a 
-            href="tel:+70000000000"
+            href="tel:+79240098880"
             className="w-12 h-12 bg-background border border-separator flex items-center justify-center text-secondary hover:text-foreground hover:border-foreground transition-all duration-300"
             aria-label="Phone"
           >

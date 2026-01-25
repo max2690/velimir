@@ -32,8 +32,8 @@ export const Footer = () => {
             <h4 className="text-xs uppercase tracking-[0.2em] text-foreground mb-8">Контакты</h4>
             <ul className="space-y-4">
               <li>
-                <a href="tel:+70000000000" className="text-sm text-secondary hover:text-foreground">
-                  +7 (000) 000-00-00
+                <a href="tel:+79240098880" className="text-sm text-secondary hover:text-foreground">
+                  +7 (924) 009-88-80
                 </a>
               </li>
               <li>
@@ -42,7 +42,7 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/70000000000" className="text-sm text-secondary hover:text-foreground">
+                <a href="https://wa.me/79240098880" className="text-sm text-secondary hover:text-foreground">
                   WhatsApp
                 </a>
               </li>

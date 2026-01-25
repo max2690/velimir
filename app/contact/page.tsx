@@ -22,7 +22,7 @@ export default function ContactPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
           <a 
-            href="https://wa.me/70000000000" 
+            href="https://wa.me/79240098880" 
             target="_blank" 
             className="group p-8 border border-separator hover:border-foreground transition-all duration-500"
           >
@@ -42,12 +42,12 @@ export default function ContactPage() {
           </a>
           
           <a 
-            href="tel:+70000000000" 
+            href="tel:+79240098880" 
             className="group p-8 border border-separator hover:border-foreground transition-all duration-500"
           >
             <Phone className="mb-6 text-secondary group-hover:text-foreground transition-colors" size={32} />
             <h3 className="text-lg uppercase tracking-widest mb-2">Телефон</h3>
-            <p className="text-secondary text-sm">+7 (000) 000-00-00</p>
+            <p className="text-secondary text-sm">+7 (924) 009-88-80</p>
           </a>
         </div>
 
