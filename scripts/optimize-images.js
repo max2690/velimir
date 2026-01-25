@@ -3,9 +3,22 @@ const fs = require('fs');
 const path = require('path');
 
 const imagesToOptimize = [
+  // Арт-объекты
   { input: 'public/img/products/art-1.jpg', output: 'public/img/products/art-1.jpg' },
   { input: 'public/img/products/art-2.jpg', output: 'public/img/products/art-2.jpg' },
   { input: 'public/img/products/art-3.jpg', output: 'public/img/products/art-3.jpg' },
+  // Столы из эпоксидной смолы
+  { input: 'public/img/products/epoxy-tables-1.jpg', output: 'public/img/products/epoxy-tables-1.jpg' },
+  { input: 'public/img/products/epoxy-tables-2.jpg', output: 'public/img/products/epoxy-tables-2.jpg' },
+  { input: 'public/img/products/epoxy-tables-3.jpg', output: 'public/img/products/epoxy-tables-3.jpg' },
+  // Мебель на заказ
+  { input: 'public/img/products/custom-furniture-1.jpg', output: 'public/img/products/custom-furniture-1.jpg' },
+  { input: 'public/img/products/custom-furniture-2.jpg', output: 'public/img/products/custom-furniture-2.jpg' },
+  { input: 'public/img/products/custom-furniture-3.jpg', output: 'public/img/products/custom-furniture-3.jpg' },
+  // ЧПУ
+  { input: 'public/img/products/cnc-1.jpg', output: 'public/img/products/cnc-1.jpg' },
+  { input: 'public/img/products/cnc-2.jpg', output: 'public/img/products/cnc-2.jpg' },
+  { input: 'public/img/products/cnc-3.jpg', output: 'public/img/products/cnc-3.jpg' },
 ];
 
 async function optimizeImage(inputPath, outputPath) {
@@ -18,9 +31,9 @@ async function optimizeImage(inputPath, outputPath) {
     // Создаем временный файл
     const tempPath = outputPath + '.tmp';
     
-    // Оптимизация: качество 85%, максимальная ширина 1200px (сохраняем пропорции)
+    // Оптимизация: качество 85%, максимальная ширина 1200px, высота 1500px (соотношение 4:5)
     await sharp(inputPath)
-      .resize(1200, null, {
+      .resize(1200, 1500, {
         withoutEnlargement: true,
         fit: 'inside'
       })
