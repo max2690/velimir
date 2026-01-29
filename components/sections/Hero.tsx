@@ -20,11 +20,11 @@ export const Hero = () => {
           <source src="/video/hero.mp4" type="video/mp4" />
         </video>
         {/* Overlay */}
-        <div className="absolute inset-0 bg-background/60 md:bg-background/70 z-10" />
+        <div className="absolute inset-0 bg-background/50 md:bg-background/60 z-10" />
       </div>
 
       {/* Content */}
-      <div className="section-container relative z-20 text-center">
+      <div className="section-container relative z-30 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

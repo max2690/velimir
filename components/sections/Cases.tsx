@@ -46,6 +46,7 @@ export const Cases = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {cases.map((item, index) => {
           const CaseCard = () => {
+            const [imageError, setImageError] = useState(false);
             const parallaxSpeed = (index % 2 === 0 ? 0.06 : -0.06);
             const offset = useParallax(parallaxSpeed);
 
@@ -64,12 +65,20 @@ export const Cases = () => {
                     style={{ transform: `translateY(${offset}px)` }}
                     className="absolute inset-0 transition-transform duration-300 ease-out"
                   >
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                    />
+                    {!imageError ? (
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                        onError={() => setImageError(true)}
+                        unoptimized
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-separator/20 text-secondary text-xs uppercase tracking-widest">
+                        Скоро
+                      </div>
+                    )}
                   </div>
                   <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors" />
                 </div>
@@ -114,6 +123,15 @@ export const Cases = () => {
                     alt={selectedCase.title}
                     fill
                     className="object-cover grayscale contrast-110"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const placeholder = document.createElement('div');
+                      placeholder.className = 'w-full h-full flex items-center justify-center bg-separator/20 text-secondary text-sm uppercase tracking-widest';
+                      placeholder.textContent = 'Изображение скоро появится';
+                      target.parentElement?.appendChild(placeholder);
+                    }}
+                    unoptimized
                   />
                 </div>
                 <div className="p-12 md:p-16 flex flex-col justify-center">

@@ -37,7 +37,6 @@ export default function RootLayout({
   return (
     <html lang="ru" className="scroll-smooth">
       <body className={`${inter.variable} ${manrope.variable} font-sans`}>
-        <div className="grain-overlay" />
         {children}
         <Toaster
           position="bottom-right"

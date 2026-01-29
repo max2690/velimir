@@ -13,6 +13,7 @@ export const Section = ({ children, className, id, museum = true }: SectionProps
     <section 
       id={id} 
       className={cn(
+        "relative z-10",
         museum && "museum-padding",
         className
       )}

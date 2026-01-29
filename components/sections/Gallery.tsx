@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Section, Title } from "@/components/ui";
 import Image from "next/image";
@@ -13,6 +13,7 @@ const galleryImages = Array.from({ length: 12 }, (_, i) => ({
 }));
 
 const GalleryItem = ({ img, index }: { img: typeof galleryImages[0]; index: number }) => {
+  const [imageError, setImageError] = useState(false);
   // Разные скорости параллакса для создания глубины
   const parallaxSpeed = (index % 3 === 0 ? 0.05 : index % 3 === 1 ? 0.08 : 0.12) * (index % 2 === 0 ? 1 : -1);
   const offset = useParallax(parallaxSpeed);
@@ -30,12 +31,20 @@ const GalleryItem = ({ img, index }: { img: typeof galleryImages[0]; index: numb
         style={{ transform: `translateY(${offset}px)` }}
         className="absolute inset-0 transition-transform duration-300 ease-out"
       >
-        <Image
-          src={img.src}
-          alt={img.alt}
-          fill
-          className="object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-1000"
-        />
+        {!imageError ? (
+          <Image
+            src={img.src}
+            alt={img.alt}
+            fill
+            className="object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-1000"
+            onError={() => setImageError(true)}
+            unoptimized
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-separator/20 text-secondary text-xs uppercase tracking-widest">
+            Скоро
+          </div>
+        )}
       </div>
     </motion.div>
   );
