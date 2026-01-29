@@ -4,41 +4,45 @@ const path = require('path');
 
 const imagesToOptimize = [
   // Арт-объекты
-  { input: 'public/img/products/art-1.jpg', output: 'public/img/products/art-1.jpg' },
-  { input: 'public/img/products/art-2.jpg', output: 'public/img/products/art-2.jpg' },
-  { input: 'public/img/products/art-3.jpg', output: 'public/img/products/art-3.jpg' },
+  { input: 'public/img/products/art-1.jpg', output: 'public/img/products/art-1.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
+  { input: 'public/img/products/art-2.jpg', output: 'public/img/products/art-2.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
+  { input: 'public/img/products/art-3.jpg', output: 'public/img/products/art-3.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
   // Столы из эпоксидной смолы
-  { input: 'public/img/products/epoxy-tables-1.jpg', output: 'public/img/products/epoxy-tables-1.jpg' },
-  { input: 'public/img/products/epoxy-tables-2.jpg', output: 'public/img/products/epoxy-tables-2.jpg' },
-  { input: 'public/img/products/epoxy-tables-3.jpg', output: 'public/img/products/epoxy-tables-3.jpg' },
+  { input: 'public/img/products/epoxy-tables-1.jpg', output: 'public/img/products/epoxy-tables-1.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
+  { input: 'public/img/products/epoxy-tables-2.jpg', output: 'public/img/products/epoxy-tables-2.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
+  { input: 'public/img/products/epoxy-tables-3.jpg', output: 'public/img/products/epoxy-tables-3.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
   // Мебель на заказ
-  { input: 'public/img/products/custom-furniture-1.jpg', output: 'public/img/products/custom-furniture-1.jpg' },
-  { input: 'public/img/products/custom-furniture-2.jpg', output: 'public/img/products/custom-furniture-2.jpg' },
-  { input: 'public/img/products/custom-furniture-3.jpg', output: 'public/img/products/custom-furniture-3.jpg' },
+  { input: 'public/img/products/custom-furniture-1.jpg', output: 'public/img/products/custom-furniture-1.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
+  { input: 'public/img/products/custom-furniture-2.jpg', output: 'public/img/products/custom-furniture-2.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
+  { input: 'public/img/products/custom-furniture-3.jpg', output: 'public/img/products/custom-furniture-3.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
   // ЧПУ
-  { input: 'public/img/products/cnc-1.jpg', output: 'public/img/products/cnc-1.jpg' },
-  { input: 'public/img/products/cnc-2.jpg', output: 'public/img/products/cnc-2.jpg' },
-  { input: 'public/img/products/cnc-3.jpg', output: 'public/img/products/cnc-3.jpg' },
+  { input: 'public/img/products/cnc-1.jpg', output: 'public/img/products/cnc-1.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
+  { input: 'public/img/products/cnc-2.jpg', output: 'public/img/products/cnc-2.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
+  { input: 'public/img/products/cnc-3.jpg', output: 'public/img/products/cnc-3.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
 ];
 
-async function optimizeImage(inputPath, outputPath) {
+// Галерея: квадрат 1200x1200, до ~250 KB
+const galleryImages = Array.from({ length: 12 }, (_, i) => {
+  const name = `g${String(i + 1).padStart(2, '0')}.jpg`;
+  return { input: `public/img/gallery/${name}`, output: `public/img/gallery/${name}`, width: 1200, height: 1200, quality: 80, fit: 'cover' };
+});
+
+async function optimizeImage(inputPath, outputPath, options = { width: 1200, height: 1500, quality: 85, fit: 'inside' }) {
   try {
     const stats = fs.statSync(inputPath);
     const originalSize = (stats.size / 1024).toFixed(2);
     
     console.log(`Optimizing ${path.basename(inputPath)} (${originalSize} KB)...`);
     
-    // Создаем временный файл
     const tempPath = outputPath + '.tmp';
     
-    // Оптимизация: качество 85%, максимальная ширина 1200px, высота 1500px (соотношение 4:5)
     await sharp(inputPath)
-      .resize(1200, 1500, {
+      .resize(options.width, options.height, {
         withoutEnlargement: true,
-        fit: 'inside'
+        fit: options.fit || 'inside'
       })
       .jpeg({ 
-        quality: 85,
+        quality: options.quality,
         mozjpeg: true,
         progressive: true
       })
@@ -64,9 +68,10 @@ async function optimizeImage(inputPath, outputPath) {
 async function main() {
   console.log('Starting image optimization...\n');
   
-  for (const img of imagesToOptimize) {
+  const all = [...imagesToOptimize, ...galleryImages];
+  for (const img of all) {
     if (fs.existsSync(img.input)) {
-      await optimizeImage(img.input, img.output);
+      await optimizeImage(img.input, img.output, { width: img.width, height: img.height, quality: img.quality, fit: img.fit });
     } else {
       console.log(`⚠ File not found: ${img.input}`);
     }
