@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Section, Title, Button } from "@/components/ui";
 import Image from "next/image";
 import { X } from "lucide-react";
-import { useParallax } from "@/lib/hooks/useParallax";
 
 const cases = [
   {
@@ -34,6 +33,37 @@ const cases = [
   },
 ];
 
+const CaseCard = ({ caseItem, onSelect }: { caseItem: typeof cases[0]; onSelect: () => void }) => {
+  const [imageError, setImageError] = useState(false);
+  return (
+    <div
+      className="group cursor-pointer transition-transform hover:-translate-y-2"
+      onClick={onSelect}
+    >
+      <div className="relative aspect-video overflow-hidden bg-separator/10 mb-4 sm:mb-6">
+        {!imageError ? (
+          <Image
+            src={caseItem.image}
+            alt={caseItem.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            quality={82}
+            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center bg-separator/20 text-secondary text-xs uppercase tracking-widest">
+            Скоро
+          </div>
+        )}
+        <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors pointer-events-none" />
+      </div>
+      <h3 className="text-base sm:text-lg uppercase tracking-widest">{caseItem.title}</h3>
+      <p className="text-secondary text-xs mt-1.5 sm:mt-2 uppercase tracking-widest">Подробнее →</p>
+    </div>
+  );
+};
+
 export const Cases = () => {
   const [selectedCase, setSelectedCase] = useState<typeof cases[0] | null>(null);
 
@@ -44,49 +74,9 @@ export const Cases = () => {
       </Title>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        {cases.map((item, index) => {
-          const CaseCard = () => {
-            const [imageError, setImageError] = useState(false);
-            const parallaxSpeed = (index % 2 === 0 ? 0.06 : -0.06);
-            const offset = useParallax(parallaxSpeed);
-
-            return (
-              <div
-                key={item.id}
-                className="group cursor-pointer transition-transform hover:-translate-y-2"
-                onClick={() => setSelectedCase(item)}
-              >
-                <div className="relative aspect-video overflow-hidden bg-separator/10 mb-4 sm:mb-6">
-                  <div
-                    style={{ transform: `translateY(${offset}px)` }}
-                    className="absolute inset-0 transition-transform duration-300 ease-out"
-                  >
-                    {!imageError ? (
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        quality={82}
-                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                        onError={() => setImageError(true)}
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-separator/20 text-secondary text-xs uppercase tracking-widest">
-                        Скоро
-                      </div>
-                    )}
-                  </div>
-                  <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors" />
-                </div>
-                <h3 className="text-base sm:text-lg uppercase tracking-widest">{item.title}</h3>
-                <p className="text-secondary text-xs mt-1.5 sm:mt-2 uppercase tracking-widest">Подробнее →</p>
-              </div>
-            );
-          };
-
-          return <CaseCard key={item.id} />;
-        })}
+        {cases.map((item) => (
+          <CaseCard key={item.id} caseItem={item} onSelect={() => setSelectedCase(item)} />
+        ))}
       </div>
 
       <AnimatePresence>
