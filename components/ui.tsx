@@ -60,7 +60,7 @@ export const Button = ({ children, className, variant = "primary", ...props }: B
   return (
     <button
       className={cn(
-        "px-8 py-4 text-sm uppercase tracking-[0.2em] transition-all duration-300",
+        "px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm uppercase tracking-[0.2em] transition-all duration-300",
         variant === "primary" && "bg-foreground text-background hover:bg-secondary",
         variant === "secondary" && "bg-separator text-foreground hover:bg-white/10",
         variant === "outline" && "border border-separator text-foreground hover:border-foreground",

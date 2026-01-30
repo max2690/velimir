@@ -21,6 +21,13 @@ const imagesToOptimize = [
   { input: 'public/img/products/cnc-3.jpg', output: 'public/img/products/cnc-3.jpg', width: 1200, height: 1500, quality: 85, fit: 'inside' },
 ];
 
+// Кейсы: 16:9, до ~150 KB
+const caseImages = [
+  { input: 'public/img/cases/c01.jpg', output: 'public/img/cases/c01.jpg', width: 1200, height: 675, quality: 82, fit: 'cover' },
+  { input: 'public/img/cases/c02.jpg', output: 'public/img/cases/c02.jpg', width: 1200, height: 675, quality: 82, fit: 'cover' },
+  { input: 'public/img/cases/c03.jpg', output: 'public/img/cases/c03.jpg', width: 1200, height: 675, quality: 82, fit: 'cover' },
+];
+
 // Галерея: квадрат 1200x1200, до ~250 KB
 const galleryImages = Array.from({ length: 12 }, (_, i) => {
   const name = `g${String(i + 1).padStart(2, '0')}.jpg`;
@@ -68,7 +75,7 @@ async function optimizeImage(inputPath, outputPath, options = { width: 1200, hei
 async function main() {
   console.log('Starting image optimization...\n');
   
-  const all = [...imagesToOptimize, ...galleryImages];
+  const all = [...imagesToOptimize, ...caseImages, ...galleryImages];
   for (const img of all) {
     if (fs.existsSync(img.input)) {
       await optimizeImage(img.input, img.output, { width: img.width, height: img.height, quality: img.quality, fit: img.fit });

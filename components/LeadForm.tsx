@@ -94,13 +94,13 @@ export const LeadForm = ({ className }: { className?: string }) => {
         >
           <input type="text" {...register("honeypot")} className="hidden" tabIndex={-1} />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
             <div className="space-y-2">
               <label className="text-[10px] uppercase tracking-widest text-secondary">Ваше имя</label>
               <input
                 {...register("name")}
                 className={cn(
-                  "w-full bg-transparent border-b border-separator py-4 focus:border-foreground outline-none transition-colors",
+                  "w-full bg-transparent border-b border-separator py-3 sm:py-4 focus:border-foreground outline-none transition-colors text-base",
                   errors.name && "border-red-500/50"
                 )}
                 placeholder="Иван"
@@ -113,7 +113,7 @@ export const LeadForm = ({ className }: { className?: string }) => {
               <input
                 {...register("phone")}
                 className={cn(
-                  "w-full bg-transparent border-b border-separator py-4 focus:border-foreground outline-none transition-colors",
+                  "w-full bg-transparent border-b border-separator py-3 sm:py-4 focus:border-foreground outline-none transition-colors text-base",
                   errors.phone && "border-red-500/50"
                 )}
                 placeholder="+7 (___) ___-__-__"

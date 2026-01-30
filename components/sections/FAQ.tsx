@@ -31,12 +31,12 @@ const FAQItem = ({ faq }: { faq: typeof faqs[0] }) => {
     <div className="border-b border-separator">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-8 flex items-center justify-between text-left group"
+        className="w-full py-5 sm:py-6 md:py-8 flex items-center justify-between text-left group gap-4"
       >
-        <span className="text-lg md:text-xl font-display uppercase tracking-tight group-hover:text-foreground transition-colors">
+        <span className="text-base sm:text-lg md:text-xl font-display uppercase tracking-tight group-hover:text-foreground transition-colors text-left">
           {faq.question}
         </span>
-        {isOpen ? <Minus size={20} className="text-secondary" /> : <Plus size={20} className="text-secondary" />}
+        <span className="shrink-0">{isOpen ? <Minus size={20} className="text-secondary" /> : <Plus size={20} className="text-secondary" />}</span>
       </button>
       
       <AnimatePresence>
@@ -48,7 +48,7 @@ const FAQItem = ({ faq }: { faq: typeof faqs[0] }) => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="pb-8 text-secondary leading-relaxed max-w-3xl">
+            <p className="pb-6 sm:pb-8 text-secondary text-sm sm:text-base leading-relaxed max-w-3xl">
               {faq.answer}
             </p>
           </motion.div>
@@ -61,7 +61,7 @@ const FAQItem = ({ faq }: { faq: typeof faqs[0] }) => {
 export const FAQ = () => {
   return (
     <Section id="faq">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 sm:gap-12 md:gap-16 lg:gap-24">
         <div>
           <Title subtitle="Ответы на часто задаваемые вопросы о процессе заказа и производства.">
             FAQ

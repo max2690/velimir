@@ -28,11 +28,11 @@
 }
 
 .museum-padding {
-  @apply py-24 md:py-32 lg:py-48;
+  @apply py-16 sm:py-24 md:py-32 lg:py-48;
 }
 
 .section-container {
-  @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-24;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24;
 }
 
 /* Typography */

@@ -30,15 +30,15 @@ export const Header = () => {
       <header 
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-all duration-500",
-          isScrolled ? "bg-background py-4 border-b border-separator" : "bg-transparent py-8"
+          isScrolled ? "bg-background py-3 sm:py-4 border-b border-separator" : "bg-transparent py-5 sm:py-6 md:py-8"
         )}
       >
         <div className="section-container flex items-center justify-between">
-          <Link href="/" className="text-2xl font-display font-medium tracking-tighter">
+          <Link href="/" className="text-xl sm:text-2xl font-display font-medium tracking-tighter">
             VELIMIR
           </Link>
           
-          <nav className="hidden md:flex items-center space-x-12">
+          <nav className="hidden md:flex items-center space-x-8 lg:space-x-12">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 

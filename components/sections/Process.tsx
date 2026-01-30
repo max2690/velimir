@@ -20,14 +20,14 @@ export const Process = () => {
         Процесс
       </Title>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 gap-x-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 sm:gap-y-12 md:gap-y-16 gap-x-6 md:gap-x-12">
         {steps.map((step, index) => (
           <div key={step.id} className="relative">
-            <span className="text-4xl font-display text-separator mb-6 block">
+            <span className="text-3xl sm:text-4xl font-display text-separator mb-4 sm:mb-6 block">
               {step.id}
             </span>
-            <h3 className="text-lg font-medium mb-4 uppercase tracking-widest">{step.name}</h3>
-            <p className="text-secondary text-sm leading-relaxed">{step.desc}</p>
+            <h3 className="text-base sm:text-lg font-medium mb-3 sm:mb-4 uppercase tracking-widest">{step.name}</h3>
+            <p className="text-secondary text-xs sm:text-sm leading-relaxed">{step.desc}</p>
             
             {index !== steps.length - 1 && (
               <div className="hidden lg:block absolute top-6 -right-6 w-12 h-px bg-separator/30" />

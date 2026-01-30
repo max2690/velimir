@@ -20,6 +20,8 @@ const GalleryItem = ({ img }: { img: typeof galleryImages[0] }) => {
           <img
             src={img.src}
             alt={img.alt}
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-1000"
             onError={() => setImageError(true)}
           />
@@ -40,7 +42,7 @@ export const Gallery = () => {
         Галерея
       </Title>
       
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6 lg:gap-8">
         {galleryImages.map((img) => (
           <GalleryItem key={img.id} img={img} />
         ))}

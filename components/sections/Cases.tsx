@@ -18,10 +18,10 @@ const cases = [
   },
   {
     id: "c02",
-    title: "Шахматный набор «Geometric»",
-    task: "Игровой набор в подарок для коллекционера.",
-    solution: "Шахматы из экзотического дерева и смолы с индивидуальной геометрией фигур, выполненной на ЧПУ.",
-    result: "Арт-объект и функциональная игра в одном предмете.",
+    title: "Барная стойка «Flow»",
+    task: "Создать флагманскую барную стойку для премиального интерьера ресторана / лаунж-пространства, способную стать визуальным центром зала и формировать атмосферу статуса, уюта и эксклюзивности.",
+    solution: "Барная стойка из массива натурального дерева с художественной заливкой глубокой эпоксидной смолой. Волнообразная геометрия поверхности формирует эффект движения и глубины.\nОснование выполнено из архитектурного металлокаркаса с интегрированной подсветкой.\nВ конструкцию встроены:\n— многоуровневая световая система,\n— скрытые розетки и технологические каналы,\n— эргономичные рабочие зоны для барменов.\n\nКаждый элемент стойки проектируется индивидуально под конкретное пространство.",
+    result: "Функциональная барная стойка, превращённая в арт-объект. Центральный элемент интерьера, усиливающий атмосферу заведения, повышающий визуальную ценность пространства и формирующий уникальный облик бренда.",
     image: "/img/cases/c02.jpg",
   },
   {
@@ -43,7 +43,7 @@ export const Cases = () => {
         Кейсы
       </Title>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {cases.map((item, index) => {
           const CaseCard = () => {
             const [imageError, setImageError] = useState(false);
@@ -56,7 +56,7 @@ export const Cases = () => {
                 className="group cursor-pointer transition-transform hover:-translate-y-2"
                 onClick={() => setSelectedCase(item)}
               >
-                <div className="relative aspect-video overflow-hidden bg-separator/10 mb-6">
+                <div className="relative aspect-video overflow-hidden bg-separator/10 mb-4 sm:mb-6">
                   <div
                     style={{ transform: `translateY(${offset}px)` }}
                     className="absolute inset-0 transition-transform duration-300 ease-out"
@@ -66,9 +66,10 @@ export const Cases = () => {
                         src={item.image}
                         alt={item.title}
                         fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        quality={82}
                         className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                         onError={() => setImageError(true)}
-                        unoptimized
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-separator/20 text-secondary text-xs uppercase tracking-widest">
@@ -78,8 +79,8 @@ export const Cases = () => {
                   </div>
                   <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors" />
                 </div>
-                <h3 className="text-lg uppercase tracking-widest">{item.title}</h3>
-                <p className="text-secondary text-xs mt-2 uppercase tracking-widest">Подробнее →</p>
+                <h3 className="text-base sm:text-lg uppercase tracking-widest">{item.title}</h3>
+                <p className="text-secondary text-xs mt-1.5 sm:mt-2 uppercase tracking-widest">Подробнее →</p>
               </div>
             );
           };
@@ -90,7 +91,7 @@ export const Cases = () => {
 
       <AnimatePresence>
         {selectedCase && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8 overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -127,24 +128,23 @@ export const Cases = () => {
                       placeholder.textContent = 'Изображение скоро появится';
                       target.parentElement?.appendChild(placeholder);
                     }}
-                    unoptimized
                   />
                 </div>
-                <div className="p-12 md:p-16 flex flex-col justify-center">
-                  <h3 className="text-2xl font-display mb-12 uppercase tracking-tighter">{selectedCase.title}</h3>
+                <div className="p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+                  <h3 className="text-xl sm:text-2xl font-display mb-8 sm:mb-12 uppercase tracking-tighter">{selectedCase.title}</h3>
                   
-                  <div className="space-y-8">
+                  <div className="space-y-6 sm:space-y-8">
                     <div>
                       <h4 className="text-[10px] uppercase tracking-[0.3em] text-secondary mb-2">Задача</h4>
-                      <p className="text-sm leading-relaxed">{selectedCase.task}</p>
+                      <p className="text-sm leading-relaxed whitespace-pre-line">{selectedCase.task}</p>
                     </div>
                     <div>
                       <h4 className="text-[10px] uppercase tracking-[0.3em] text-secondary mb-2">Решение</h4>
-                      <p className="text-sm leading-relaxed">{selectedCase.solution}</p>
+                      <p className="text-sm leading-relaxed whitespace-pre-line">{selectedCase.solution}</p>
                     </div>
                     <div>
                       <h4 className="text-[10px] uppercase tracking-[0.3em] text-secondary mb-2">Результат</h4>
-                      <p className="text-sm leading-relaxed">{selectedCase.result}</p>
+                      <p className="text-sm leading-relaxed whitespace-pre-line">{selectedCase.result}</p>
                     </div>
                   </div>
                   

@@ -23,22 +23,22 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="section-container relative z-30 text-center">
+      <div className="section-container relative z-30 text-center px-4 sm:px-6">
         <div>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-medium mb-8 tracking-tighter">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-medium mb-6 sm:mb-8 tracking-tighter">
             VELIMIR
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl font-light text-foreground/80 mb-4 tracking-[0.3em] uppercase">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-foreground/80 mb-3 sm:mb-4 tracking-[0.2em] sm:tracking-[0.3em] uppercase">
             Мастерская форм и смысла
           </p>
-          <p className="text-secondary text-sm md:text-base mb-12 max-w-lg mx-auto leading-relaxed">
+          <p className="text-secondary text-xs sm:text-sm md:text-base mb-8 sm:mb-12 max-w-lg mx-auto leading-relaxed">
             мебель · арт-объекты · индивидуальные изделия
           </p>
           
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <Button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="w-full md:w-auto"
+              className="w-full sm:w-auto min-w-[200px]"
             >
               Обсудить проект
             </Button>
@@ -47,7 +47,7 @@ export const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4 z-20">
+      <div className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-3 sm:space-y-4 z-20">
         <span className="text-[10px] uppercase tracking-[0.4em] text-secondary">Explore</span>
         <div className="w-px h-12 bg-gradient-to-b from-separator to-transparent" />
       </div>

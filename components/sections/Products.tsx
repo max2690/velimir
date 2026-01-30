@@ -96,44 +96,47 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
       className="group"
       onMouseEnter={handleMouseEnter}
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-separator/10 mb-8">
+      <div className="relative aspect-[4/5] overflow-hidden bg-separator/10 mb-5 sm:mb-8">
         <div key={currentImage} className="absolute inset-0">
           <Image
             src={product.images[currentImage]}
             alt={product.title}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            quality={82}
             className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-            unoptimized
           />
         </div>
         
-        {/* Navigation Overlays */}
-        <div className="absolute inset-x-0 bottom-0 flex justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+        {/* Navigation: always visible on touch, hover on desktop */}
+        <div className="absolute inset-x-0 bottom-0 flex justify-between items-end p-3 sm:p-4 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
           <button 
             onClick={prevImage}
-            className="w-10 h-10 bg-background/50 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors"
+            className="w-9 h-9 sm:w-10 sm:h-10 bg-background/70 sm:bg-background/50 flex items-center justify-center hover:bg-background transition-colors touch-manipulation"
+            aria-label="Предыдущее фото"
           >
             <ChevronLeft size={16} />
           </button>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1.5 sm:space-x-2">
             {product.images.map((_, i) => (
               <div 
                 key={i} 
-                className={`w-1 h-1 rounded-full transition-all ${i === currentImage ? 'bg-white w-4' : 'bg-white/30'}`} 
+                className={`w-1 h-1 rounded-full transition-all ${i === currentImage ? 'bg-white w-3 sm:w-4' : 'bg-white/30'}`} 
               />
             ))}
           </div>
           <button 
             onClick={nextImage}
-            className="w-10 h-10 bg-background/50 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors"
+            className="w-9 h-9 sm:w-10 sm:h-10 bg-background/70 sm:bg-background/50 flex items-center justify-center hover:bg-background transition-colors touch-manipulation"
+            aria-label="Следующее фото"
           >
             <ChevronRight size={16} />
           </button>
         </div>
       </div>
       
-      <h3 className="text-xl font-display mb-4 uppercase tracking-wider">{product.title}</h3>
-      <p className="text-secondary text-sm leading-relaxed mb-6">{product.description}</p>
+      <h3 className="text-base sm:text-lg md:text-xl font-display mb-3 sm:mb-4 uppercase tracking-wider">{product.title}</h3>
+      <p className="text-secondary text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">{product.description}</p>
       
       <div className="w-12 h-px bg-separator group-hover:w-full transition-all duration-700" />
     </div>
@@ -147,7 +150,7 @@ export const Products = () => {
         Направления
       </Title>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 lg:gap-8">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
