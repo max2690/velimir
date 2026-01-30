@@ -104,17 +104,16 @@ export const Cases = () => {
               </button>
               
               <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="relative aspect-square md:aspect-auto">
-                  <Image
+                <div className="relative aspect-square md:aspect-auto overflow-hidden bg-separator/10 group">
+                  <img
                     src={selectedCase.image}
                     alt={selectedCase.title}
-                    fill
-                    className="object-cover grayscale-[0.78] hover:grayscale-0 contrast-110 transition-all duration-700"
+                    className="absolute inset-0 w-full h-full object-cover grayscale-[0.78] group-hover:grayscale-0 contrast-110 transition-all duration-700"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
                       const placeholder = document.createElement('div');
-                      placeholder.className = 'w-full h-full flex items-center justify-center bg-separator/20 text-secondary text-sm uppercase tracking-widest';
+                      placeholder.className = 'absolute inset-0 flex items-center justify-center bg-separator/20 text-secondary text-sm uppercase tracking-widest';
                       placeholder.textContent = 'Изображение скоро появится';
                       target.parentElement?.appendChild(placeholder);
                     }}
