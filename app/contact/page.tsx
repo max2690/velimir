@@ -67,7 +67,7 @@ export default function ContactPage() {
                 src="/qr/velimir-qr.png" 
                 alt="Velimir QR" 
                 fill 
-                className="object-contain grayscale-[0.88]"
+                className="object-contain grayscale-[0.78]"
               />
               <div className="absolute inset-0 flex items-center justify-center text-[10px] text-secondary/20 pointer-events-none">
                 SCAN TO CONNECT

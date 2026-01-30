@@ -66,7 +66,7 @@ export const Footer = () => {
                 alt="Velimir QR" 
                 fill 
                 sizes="128px"
-                className="object-contain grayscale-[0.88] contrast-125"
+                className="object-contain grayscale-[0.78] contrast-125"
               />
               {/* Fallback if no image */}
               <div className="absolute inset-0 flex items-center justify-center text-[8px] text-secondary/30 pointer-events-none">
