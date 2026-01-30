@@ -48,7 +48,7 @@ const CaseCard = ({ caseItem, onSelect }: { caseItem: typeof cases[0]; onSelect:
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             quality={82}
-            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+            className="object-cover grayscale-[0.78] group-hover:grayscale-0 transition-all duration-700"
             onError={() => setImageError(true)}
           />
         ) : (
@@ -97,10 +97,11 @@ export const Cases = () => {
               className="relative w-full max-w-4xl bg-background border border-separator overflow-hidden"
             >
               <button 
-                onClick={() => setSelectedCase(null)}
-                className="absolute top-6 right-6 z-10 text-secondary hover:text-foreground transition-colors"
+                onClick={(e) => { e.stopPropagation(); setSelectedCase(null); }}
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[20] w-10 h-10 flex items-center justify-center rounded-none bg-background/95 border border-separator text-secondary hover:text-foreground hover:border-foreground transition-colors"
+                aria-label="Закрыть"
               >
-                <X size={24} />
+                <X size={22} />
               </button>
               
               <div className="grid grid-cols-1 md:grid-cols-2">
