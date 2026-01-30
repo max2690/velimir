@@ -109,7 +109,7 @@ export const Cases = () => {
                     src={selectedCase.image}
                     alt={selectedCase.title}
                     fill
-                    className="object-cover grayscale contrast-110"
+                    className="object-cover grayscale-[0.88] contrast-110"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';

@@ -104,7 +104,7 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             quality={82}
-            className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            className="object-cover grayscale-[0.88] hover:grayscale-0 transition-all duration-700"
           />
         </div>
         

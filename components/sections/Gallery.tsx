@@ -22,7 +22,7 @@ const GalleryItem = ({ img }: { img: typeof galleryImages[0] }) => {
             alt={img.alt}
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-1000"
+            className="absolute inset-0 w-full h-full object-cover grayscale-[0.88] hover:grayscale-0 hover:scale-105 transition-all duration-1000"
             onError={() => setImageError(true)}
           />
         ) : (
