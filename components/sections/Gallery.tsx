@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { Section, Title } from "@/components/ui";
 import Image from "next/image";
 import { useParallax } from "@/lib/hooks/useParallax";
@@ -14,39 +13,40 @@ const galleryImages = Array.from({ length: 12 }, (_, i) => ({
 
 const GalleryItem = ({ img, index }: { img: typeof galleryImages[0]; index: number }) => {
   const [imageError, setImageError] = useState(false);
-  // Разные скорости параллакса для создания глубины
   const parallaxSpeed = (index % 3 === 0 ? 0.05 : index % 3 === 1 ? 0.08 : 0.12) * (index % 2 === 0 ? 1 : -1);
   const offset = useParallax(parallaxSpeed);
 
   return (
-    <motion.div
+    <div
       key={img.id}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: (index % 4) * 0.1 }}
-      className="relative aspect-square overflow-hidden bg-separator/10"
+      className="relative w-full overflow-hidden bg-separator/10"
     >
+      {/* Spacer: высота = 100% от ширины → квадрат */}
+      <div className="w-full pb-[100%]" aria-hidden />
+      {/* Контент поверх spacer */}
       <div
+        className="absolute inset-0 overflow-hidden"
         style={{ transform: `translateY(${offset}px)` }}
-        className="absolute inset-0 transition-transform duration-300 ease-out"
       >
         {!imageError ? (
-          <Image
-            src={img.src}
-            alt={img.alt}
-            fill
-            className="object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-1000"
-            onError={() => setImageError(true)}
-            unoptimized
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              className="object-cover grayscale hover:grayscale-0 hover:scale-105 transition-all duration-1000"
+              onError={() => setImageError(true)}
+              unoptimized
+            />
+          </div>
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-separator/20 text-secondary text-xs uppercase tracking-widest">
             Скоро
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

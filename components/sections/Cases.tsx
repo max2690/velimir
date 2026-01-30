@@ -51,13 +51,9 @@ export const Cases = () => {
             const offset = useParallax(parallaxSpeed);
 
             return (
-              <motion.div
+              <div
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="group cursor-pointer"
+                className="group cursor-pointer transition-transform hover:-translate-y-2"
                 onClick={() => setSelectedCase(item)}
               >
                 <div className="relative aspect-video overflow-hidden bg-separator/10 mb-6">
@@ -84,7 +80,7 @@ export const Cases = () => {
                 </div>
                 <h3 className="text-lg uppercase tracking-widest">{item.title}</h3>
                 <p className="text-secondary text-xs mt-2 uppercase tracking-widest">Подробнее →</p>
-              </motion.div>
+              </div>
             );
           };
 

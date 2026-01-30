@@ -7,14 +7,18 @@
   --font-manrope: 'Manrope', sans-serif;
 }
 
-body {
-  @apply bg-background text-foreground antialiased;
-  font-feature-settings: "ss01", "ss02", "cv01", "cv02";
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    min-height: 100%;
+    overflow-x: hidden;
+    position: relative;
   }
 }
 

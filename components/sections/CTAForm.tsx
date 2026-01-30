@@ -13,7 +13,7 @@ export const CTAForm = () => {
             Обсудить <br /> проект
           </Title>
           <div className="space-y-4 text-secondary">
-            <p>Телефон: +7 (000) 000-00-00</p>
+            <p>Телефон: +7 (924) 009-88-80</p>
             <p>Email: info@velimir-lux.ru</p>
             <p>Пн — Пт: 10:00 – 19:00</p>
           </div>

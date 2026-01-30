@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui";
 
 export const Hero = () => {
@@ -25,11 +24,7 @@ export const Hero = () => {
 
       {/* Content */}
       <div className="section-container relative z-30 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <div>
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-medium mb-8 tracking-tighter">
             VELIMIR
           </h1>
@@ -48,19 +43,14 @@ export const Hero = () => {
               Обсудить проект
             </Button>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4 z-20"
-      >
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-4 z-20">
         <span className="text-[10px] uppercase tracking-[0.4em] text-secondary">Explore</span>
         <div className="w-px h-12 bg-gradient-to-b from-separator to-transparent" />
-      </motion.div>
+      </div>
 
       {/* V-Shape Divider (150° angle) */}
       <div className="absolute bottom-0 left-0 w-full h-6 z-30 pointer-events-none">

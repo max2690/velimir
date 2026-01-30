@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { Section, Title } from "@/components/ui";
 
 const steps = [
@@ -23,14 +22,7 @@ export const Process = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 gap-x-12">
         {steps.map((step, index) => (
-          <motion.div
-            key={step.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="relative"
-          >
+          <div key={step.id} className="relative">
             <span className="text-4xl font-display text-separator mb-6 block">
               {step.id}
             </span>
@@ -40,7 +32,7 @@ export const Process = () => {
             {index !== steps.length - 1 && (
               <div className="hidden lg:block absolute top-6 -right-6 w-12 h-px bg-separator/30" />
             )}
-          </motion.div>
+          </div>
         ))}
       </div>
     </Section>

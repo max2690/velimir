@@ -1,8 +1,14 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export const Footer = () => {
+  const [year, setYear] = useState<string | null>(null);
+  useEffect(() => {
+    setYear(String(new Date().getFullYear()));
+  }, []);
   return (
     <footer className="bg-background border-t border-separator pt-24 pb-12">
       <div className="section-container">
@@ -74,7 +80,7 @@ export const Footer = () => {
         
         <div className="pt-12 border-t border-separator/50 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-[10px] uppercase tracking-[0.3em] text-secondary/50">
-            © {new Date().getFullYear()} VELIMIR LUX. ALL RIGHTS RESERVED.
+            © {year ?? "\u00A0"} VELIMIR LUX. ALL RIGHTS RESERVED.
           </p>
           <div className="flex space-x-8">
             <Link href="/policy" className="text-[10px] uppercase tracking-[0.3em] text-secondary/50 hover:text-foreground transition-colors">

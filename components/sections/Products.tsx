@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Section, Title } from "@/components/ui";
 import Image from "next/image";
 import { ChevronRight, ChevronLeft } from "lucide-react";
@@ -92,32 +91,21 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
   };
 
   return (
-    <motion.div 
+    <div 
       ref={cardRef}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
       className="group"
       onMouseEnter={handleMouseEnter}
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-separator/10 mb-8">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentImage}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={product.images[currentImage]}
-              alt={product.title}
-              fill
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-            />
-          </motion.div>
-        </AnimatePresence>
+        <div key={currentImage} className="absolute inset-0">
+          <Image
+            src={product.images[currentImage]}
+            alt={product.title}
+            fill
+            className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            unoptimized
+          />
+        </div>
         
         {/* Navigation Overlays */}
         <div className="absolute inset-x-0 bottom-0 flex justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -148,7 +136,7 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
       <p className="text-secondary text-sm leading-relaxed mb-6">{product.description}</p>
       
       <div className="w-12 h-px bg-separator group-hover:w-full transition-all duration-700" />
-    </motion.div>
+    </div>
   );
 };
 
