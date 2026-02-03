@@ -43,12 +43,12 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://t.me/velimir" className="text-sm text-secondary hover:text-foreground">
+                <a href="https://t.me/velimirlux" target="_blank" rel="noopener noreferrer" className="text-sm text-secondary hover:text-foreground">
                   Telegram
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/79240098880" className="text-sm text-secondary hover:text-foreground">
+                <a href="https://wa.me/79240098880" target="_blank" rel="noopener noreferrer" className="text-sm text-secondary hover:text-foreground">
                   WhatsApp
                 </a>
               </li>
@@ -60,19 +60,15 @@ export const Footer = () => {
 
           <div className="flex flex-col items-start lg:items-end sm:col-span-2 lg:col-span-1">
             <h4 className="text-xs uppercase tracking-[0.2em] text-foreground mb-5 sm:mb-8">Связь через QR</h4>
-            <div className="w-28 h-28 sm:w-32 sm:h-32 bg-separator/20 relative border border-separator p-2">
+            <Link href="/contact" className="block w-28 h-28 sm:w-32 sm:h-32 bg-separator/20 relative border border-separator p-2">
               <Image 
                 src="/qr/velimir-qr.png" 
-                alt="Velimir QR" 
+                alt="QR-код: перейти в контакты" 
                 fill 
                 sizes="128px"
                 className="object-contain grayscale-[0.78] contrast-125"
               />
-              {/* Fallback if no image */}
-              <div className="absolute inset-0 flex items-center justify-center text-[8px] text-secondary/30 pointer-events-none">
-                QR CODE
-              </div>
-            </div>
+            </Link>
             <Link href="/contact" className="text-[10px] uppercase tracking-widest text-secondary mt-4 hover:text-foreground transition-colors">
               Перейти в контакты →
             </Link>

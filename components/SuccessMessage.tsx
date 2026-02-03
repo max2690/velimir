@@ -30,6 +30,9 @@ export const SuccessMessage = () => {
         <p className="text-secondary text-lg leading-relaxed max-w-md">
           Спасибо за обращение. Мы свяжемся с вами в ближайшее время для обсуждения проекта.
         </p>
+        <p className="text-secondary text-sm leading-relaxed max-w-md pt-2">
+          Пока ждёте — загляните в наш Telegram-канал: легенда, идеи и примеры работ.
+        </p>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -38,9 +41,14 @@ export const SuccessMessage = () => {
             На главную
           </Button>
         </Link>
-        <a href="https://wa.me/70000000000" target="_blank" rel="noopener noreferrer">
+        <a href="https://t.me/velimirlux" target="_blank" rel="noopener noreferrer">
           <Button variant="secondary" className="w-full sm:w-auto">
-            Написать в WhatsApp
+            Telegram-канал
+          </Button>
+        </a>
+        <a href="https://wa.me/79240098880" target="_blank" rel="noopener noreferrer">
+          <Button variant="outline" className="w-full sm:w-auto">
+            WhatsApp
           </Button>
         </a>
       </div>

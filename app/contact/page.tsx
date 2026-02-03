@@ -24,6 +24,7 @@ export default function ContactPage() {
           <a 
             href="https://wa.me/79240098880" 
             target="_blank" 
+            rel="noopener noreferrer"
             className="group p-8 border border-separator hover:border-foreground transition-all duration-500"
           >
             <MessageSquare className="mb-6 text-secondary group-hover:text-foreground transition-colors" size={32} />
@@ -32,8 +33,9 @@ export default function ContactPage() {
           </a>
           
           <a 
-            href="https://t.me/velimir" 
+            href="https://t.me/velimirlux" 
             target="_blank" 
+            rel="noopener noreferrer"
             className="group p-8 border border-separator hover:border-foreground transition-all duration-500"
           >
             <Send className="mb-6 text-secondary group-hover:text-foreground transition-colors" size={32} />

@@ -13,8 +13,18 @@ export const CTAForm = () => {
             Обсудить <br className="hidden sm:block" /> проект
           </Title>
           <div className="space-y-2 sm:space-y-4 text-secondary text-sm sm:text-base">
-            <p>Телефон: +7 (924) 009-88-80</p>
-            <p>Email: info@velimir-lux.ru</p>
+            <p>
+              Телефон:{" "}
+              <a href="tel:+79240098880" className="text-foreground hover:underline">
+                +7 (924) 009-88-80
+              </a>
+            </p>
+            <p>
+              Email:{" "}
+              <a href="mailto:info@velimir-lux.ru" className="text-foreground hover:underline">
+                info@velimir-lux.ru
+              </a>
+            </p>
             <p>Пн — Пт: 10:00 – 19:00</p>
           </div>
         </div>

@@ -19,6 +19,10 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "VELIMIR | Мастерская форм и смысла",
   description: "Мебель, арт-объекты, индивидуальные изделия из эпоксидной смолы и массива дерева. ЧПУ-обработка и инженерная точность.",
+  icons: {
+    icon: "/icon/favicon.svg",
+    apple: "/icon/favicon.svg",
+  },
   openGraph: {
     title: "VELIMIR LUX | Архитектурная мебель и арт-объекты",
     description: "Тихая сила, материальность и цикл производства.",
