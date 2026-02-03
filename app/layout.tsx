@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "VELIMIR | Мастерская форм и смысла",
   description: "Мебель, арт-объекты, индивидуальные изделия из эпоксидной смолы и массива дерева. ЧПУ-обработка и инженерная точность.",
   icons: {
-    icon: "/icon/favicon.svg",
+    icon: [{ url: "/icon/favicon.svg", type: "image/svg+xml" }],
     apple: "/icon/favicon.svg",
   },
   openGraph: {
